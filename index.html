@@ -1,1527 +1,464 @@
-```html
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VOLT X — Cyber Fitness</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    :root{
-      --orange:#ff5a00;
-      --orange2:#ff8a00;
-      --black:#080808;
-      --dark:#111;
-      --gray:#9a9a9a;
-      --white:#f5f5f5;
-      --line:rgba(255,255,255,.1);
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      background:var(--black);
-      color:var(--white);
-      font-family:Inter,sans-serif;
-      overflow-x:hidden;
-    }
-
-    body:before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      opacity:.035;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      z-index:999;
-    }
-
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    .container{
-      width:min(1180px,92%);
-      margin:auto;
-    }
-
-    /* NAVBAR */
-
-    nav{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      z-index:1000;
-      padding:22px 0;
-      background:rgba(8,8,8,.75);
-      backdrop-filter:blur(15px);
-      border-bottom:1px solid var(--line);
-    }
-
-    .nav-inner{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-
-    .logo{
-      font-family:"Barlow Condensed",sans-serif;
-      font-size:34px;
-      font-weight:900;
-      letter-spacing:-1px;
-    }
-
-    .logo span{
-      color:var(--orange);
-    }
-
-    .nav-links{
-      display:flex;
-      gap:34px;
-      font-size:13px;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:1px;
-    }
-
-    .nav-links a{
-      transition:.3s;
-    }
-
-    .nav-links a:hover{
-      color:var(--orange);
-    }
-
-    .nav-btn{
-      background:var(--orange);
-      padding:13px 21px;
-      color:#000;
-      font-weight:800;
-      font-size:12px;
-      text-transform:uppercase;
-      clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
-    }
-
-    /* HERO */
-
-    .hero{
-      min-height:100vh;
-      padding-top:120px;
-      display:flex;
-      align-items:center;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:50px;
-      align-items:center;
-    }
-
-    .hero:after{
-      content:"";
-      position:absolute;
-      width:600px;
-      height:600px;
-      right:-200px;
-      top:80px;
-      background:radial-gradient(circle,rgba(255,90,0,.25),transparent 65%);
-      pointer-events:none;
-    }
-
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      color:var(--orange);
-      font-size:12px;
-      font-weight:800;
-      letter-spacing:3px;
-      text-transform:uppercase;
-      margin-bottom:20px;
-    }
-
-    .eyebrow:before{
-      content:"";
-      width:35px;
-      height:2px;
-      background:var(--orange);
-    }
-
-    h1{
-      font-family:"Barlow Condensed",sans-serif;
-      font-size:clamp(75px,10vw,150px);
-      line-height:.8;
-      text-transform:uppercase;
-      font-weight:900;
-      letter-spacing:-4px;
-    }
-
-    h1 span{
-      color:var(--orange);
-      display:block;
-    }
-
-    .hero-text{
-      margin-top:30px;
-      color:#aaa;
-      max-width:520px;
-      line-height:1.8;
-      font-size:15px;
-    }
-
-    .hero-actions{
-      display:flex;
-      gap:15px;
-      margin-top:35px;
-    }
-
-    .btn{
-      display:inline-block;
-      padding:17px 27px;
-      font-size:12px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:1px;
-      transition:.3s;
-    }
-
-    .btn-orange{
-      background:var(--orange);
-      color:#000;
-    }
-
-    .btn-orange:hover{
-      background:#fff;
-      transform:translateY(-4px);
-    }
-
-    .btn-outline{
-      border:1px solid #444;
-    }
-
-    .btn-outline:hover{
-      border-color:var(--orange);
-      color:var(--orange);
-    }
-
-    /* HERO VISUAL */
-
-    .hero-visual{
-      position:relative;
-      height:560px;
-    }
-
-    .main-card{
-      position:absolute;
-      right:0;
-      top:25px;
-      width:390px;
-      height:500px;
-      background:
-        linear-gradient(135deg,rgba(255,90,0,.12),transparent 40%),
-        #151515;
-      border:1px solid #333;
-      transform:skewY(-4deg);
-      overflow:hidden;
-      box-shadow:25px 30px 80px rgba(0,0,0,.6);
-    }
-
-    .main-card:before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(110deg,transparent 40%,rgba(255,90,0,.18),transparent 60%);
-      animation:shine 4s infinite;
-    }
-
-    @keyframes shine{
-      0%,60%{transform:translateX(-100%);}
-      100%{transform:translateX(100%);}
-    }
-
-    .card-lines{
-      position:absolute;
-      inset:20px;
-      border:1px solid rgba(255,255,255,.08);
-    }
-
-    .card-number{
-      position:absolute;
-      top:30px;
-      left:30px;
-      font-family:"Barlow Condensed";
-      font-size:15px;
-      color:#777;
-      letter-spacing:3px;
-    }
-
-    .card-x{
-      position:absolute;
-      right:30px;
-      top:15px;
-      font-family:"Barlow Condensed";
-      font-size:160px;
-      line-height:1;
-      color:var(--orange);
-      opacity:.9;
-      font-weight:900;
-    }
-
-    .card-info{
-      position:absolute;
-      bottom:35px;
-      left:35px;
-    }
-
-    .card-info strong{
-      display:block;
-      font-family:"Barlow Condensed";
-      font-size:52px;
-      text-transform:uppercase;
-    }
-
-    .card-info small{
-      color:#999;
-      letter-spacing:3px;
-    }
-
-    .floating-box{
-      position:absolute;
-      background:#101010;
-      border:1px solid #333;
-      padding:20px;
-      z-index:3;
-      box-shadow:15px 20px 40px rgba(0,0,0,.4);
-    }
-
-    .floating-box.one{
-      left:0;
-      top:100px;
-    }
-
-    .floating-box.two{
-      left:35px;
-      bottom:70px;
-    }
-
-    .floating-box span{
-      display:block;
-      font-size:10px;
-      color:#777;
-      text-transform:uppercase;
-      letter-spacing:2px;
-      margin-bottom:8px;
-    }
-
-    .floating-box strong{
-      font-family:"Barlow Condensed";
-      font-size:32px;
-    }
-
-    .orange-dot{
-      display:inline-block;
-      width:8px;
-      height:8px;
-      background:var(--orange);
-      border-radius:50%;
-      margin-right:8px;
-      box-shadow:0 0 15px var(--orange);
-    }
-
-    /* MARQUEE */
-
-    .marquee{
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
-      overflow:hidden;
-      white-space:nowrap;
-      padding:18px 0;
-      background:#0d0d0d;
-    }
-
-    .marquee-track{
-      display:inline-block;
-      animation:move 20s linear infinite;
-      font-family:"Barlow Condensed";
-      font-size:25px;
-      font-weight:800;
-      text-transform:uppercase;
-    }
-
-    .marquee-track span{
-      color:var(--orange);
-      margin:0 30px;
-    }
-
-    @keyframes move{
-      from{transform:translateX(0);}
-      to{transform:translateX(-50%);}
-    }
-
-    /* SECTION */
-
-    section{
-      padding:110px 0;
-    }
-
-    .section-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      margin-bottom:55px;
-      gap:30px;
-    }
-
-    .section-label{
-      color:var(--orange);
-      text-transform:uppercase;
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:3px;
-      margin-bottom:12px;
-    }
-
-    h2{
-      font-family:"Barlow Condensed";
-      font-size:70px;
-      line-height:.9;
-      text-transform:uppercase;
-      font-weight:900;
-    }
-
-    .section-desc{
-      max-width:400px;
-      color:#888;
-      line-height:1.7;
-      font-size:14px;
-    }
-
-    /* PROGRAMS */
-
-    .program-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:2px;
-    }
-
-    .program{
-      min-height:350px;
-      padding:35px;
-      background:#111;
-      border:1px solid #222;
-      position:relative;
-      overflow:hidden;
-      transition:.4s;
-    }
-
-    .program:hover{
-      background:#171717;
-      transform:translateY(-8px);
-      border-color:var(--orange);
-    }
-
-    .program-number{
-      font-family:"Barlow Condensed";
-      color:#444;
-      font-size:60px;
-      font-weight:900;
-    }
-
-    .program-icon{
-      font-size:40px;
-      color:var(--orange);
-      margin:35px 0 20px;
-    }
-
-    .program h3{
-      font-family:"Barlow Condensed";
-      font-size:35px;
-      text-transform:uppercase;
-    }
-
-    .program p{
-      color:#777;
-      font-size:13px;
-      line-height:1.7;
-      margin-top:10px;
-    }
-
-    .program-arrow{
-      position:absolute;
-      right:25px;
-      bottom:20px;
-      color:var(--orange);
-      font-size:28px;
-    }
-
-    /* DASHBOARD */
-
-    .dashboard{
-      background:#101010;
-      border:1px solid #292929;
-      padding:35px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:35px;
-    }
-
-    .dash-main{
-      min-height:330px;
-      background:#151515;
-      padding:30px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .dash-title{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:35px;
-    }
-
-    .dash-title h3{
-      font-family:"Barlow Condensed";
-      font-size:30px;
-      text-transform:uppercase;
-    }
-
-    .live{
-      color:var(--orange);
-      font-size:10px;
-      font-weight:800;
-      letter-spacing:2px;
-    }
-
-    .bars{
-      height:180px;
-      display:flex;
-      align-items:end;
-      gap:10px;
-    }
-
-    .bar{
-      flex:1;
-      background:linear-gradient(to top,var(--orange),#ffb067);
-      height:var(--h);
-      position:relative;
-      animation:barPulse 2s infinite alternate;
-    }
-
-    .bar:after{
-      content:"";
-      position:absolute;
-      left:0;
-      right:0;
-      top:0;
-      height:2px;
-      background:#fff;
-    }
-
-    @keyframes barPulse{
-      from{opacity:.65;}
-      to{opacity:1;}
-    }
-
-    .day-labels{
-      display:flex;
-      gap:10px;
-      margin-top:12px;
-      color:#555;
-      font-size:10px;
-    }
-
-    .day-labels span{
-      flex:1;
-      text-align:center;
-    }
-
-    .metrics{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:2px;
-    }
-
-    .metric{
-      background:#151515;
-      padding:30px;
-      border:1px solid #202020;
-    }
-
-    .metric small{
-      color:#666;
-      text-transform:uppercase;
-      letter-spacing:2px;
-      font-size:9px;
-    }
-
-    .metric strong{
-      display:block;
-      font-family:"Barlow Condensed";
-      font-size:48px;
-      margin-top:15px;
-    }
-
-    .metric strong span{
-      color:var(--orange);
-      font-size:20px;
-    }
-
-    /* STATS */
-
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      border-top:1px solid #222;
-      border-bottom:1px solid #222;
-    }
-
-    .stat{
-      padding:40px 25px;
-      text-align:center;
-      border-right:1px solid #222;
-    }
-
-    .stat:last-child{
-      border-right:0;
-    }
-
-    .stat strong{
-      font-family:"Barlow Condensed";
-      font-size:65px;
-      color:var(--orange);
-    }
-
-    .stat span{
-      display:block;
-      color:#777;
-      font-size:10px;
-      letter-spacing:2px;
-      text-transform:uppercase;
-    }
-
-    /* PRICING */
-
-    .pricing{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:20px;
-    }
-
-    .price-card{
-      background:#111;
-      border:1px solid #292929;
-      padding:35px;
-      position:relative;
-      transition:.3s;
-    }
-
-    .price-card.featured{
-      border-color:var(--orange);
-      transform:translateY(-12px);
-    }
-
-    .popular{
-      position:absolute;
-      top:0;
-      right:0;
-      background:var(--orange);
-      color:#000;
-      padding:9px 16px;
-      font-size:9px;
-      font-weight:900;
-      text-transform:uppercase;
-    }
-
-    .price-card h3{
-      font-family:"Barlow Condensed";
-      font-size:32px;
-      text-transform:uppercase;
-    }
-
-    .price{
-      font-family:"Barlow Condensed";
-      font-size:65px;
-      font-weight:900;
-      margin:25px 0;
-    }
-
-    .price span{
-      font-family:Inter;
-      font-size:12px;
-      color:#666;
-    }
-
-    .price-card ul{
-      list-style:none;
-      border-top:1px solid #222;
-      padding-top:20px;
-    }
-
-    .price-card li{
-      padding:10px 0;
-      color:#888;
-      font-size:13px;
-    }
-
-    .price-card li:before{
-      content:"✓";
-      color:var(--orange);
-      margin-right:10px;
-    }
-
-    .price-btn{
-      display:block;
-      margin-top:30px;
-      text-align:center;
-      border:1px solid #333;
-      padding:14px;
-      font-size:11px;
-      font-weight:800;
-      text-transform:uppercase;
-    }
-
-    .featured .price-btn{
-      background:var(--orange);
-      color:#000;
-      border-color:var(--orange);
-    }
-
-    /* TRAINERS */
-
-    .trainer-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:20px;
-    }
-
-    .trainer{
-      background:#111;
-      min-height:390px;
-      padding:25px;
-      border:1px solid #222;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .trainer:before{
-      content:"";
-      position:absolute;
-      width:170px;
-      height:170px;
-      background:var(--orange);
-      border-radius:50%;
-      filter:blur(80px);
-      opacity:.15;
-      right:-50px;
-      top:-50px;
-    }
-
-    .trainer-avatar{
-      height:230px;
-      background:
-        linear-gradient(135deg,#222,#0d0d0d);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-family:"Barlow Condensed";
-      font-size:100px;
-      font-weight:900;
-      color:#333;
-    }
-
-    .trainer h3{
-      font-family:"Barlow Condensed";
-      font-size:30px;
-      text-transform:uppercase;
-      margin-top:20px;
-    }
-
-    .trainer p{
-      color:var(--orange);
-      font-size:10px;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      margin-top:5px;
-    }
-
-    /* CTA */
-
-    .cta{
-      background:var(--orange);
-      color:#000;
-      padding:80px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .cta:after{
-      content:"X";
-      position:absolute;
-      right:30px;
-      top:-90px;
-      font-family:"Barlow Condensed";
-      font-size:400px;
-      font-weight:900;
-      opacity:.08;
-    }
-
-    .cta h2{
-      font-size:90px;
-      max-width:700px;
-    }
-
-    .cta p{
-      max-width:520px;
-      margin:20px 0 30px;
-      line-height:1.7;
-      color:#222;
-    }
-
-    .black-btn{
-      background:#000;
-      color:#fff;
-      display:inline-block;
-      padding:16px 28px;
-      font-size:11px;
-      font-weight:900;
-      text-transform:uppercase;
-    }
-
-    /* CONTACT */
-
-    .contact{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:60px;
-    }
-
-    .contact-info h2{
-      margin-bottom:25px;
-    }
-
-    .contact-info p{
-      color:#777;
-      line-height:1.8;
-      max-width:450px;
-    }
-
-    .contact-detail{
-      margin-top:30px;
-    }
-
-    .contact-detail div{
-      padding:16px 0;
-      border-bottom:1px solid #222;
-      color:#999;
-      font-size:13px;
-    }
-
-    .contact-detail strong{
-      color:#fff;
-      display:inline-block;
-      width:100px;
-    }
-
-    form{
-      background:#111;
-      padding:35px;
-      border:1px solid #222;
-    }
-
-    input,textarea{
-      width:100%;
-      background:#0b0b0b;
-      border:1px solid #292929;
-      color:#fff;
-      padding:16px;
-      margin-bottom:12px;
-      outline:none;
-      font-family:Inter;
-    }
-
-    input:focus,textarea:focus{
-      border-color:var(--orange);
-    }
-
-    textarea{
-      height:130px;
-      resize:none;
-    }
-
-    form button{
-      width:100%;
-      border:0;
-      padding:17px;
-      background:var(--orange);
-      font-weight:900;
-      text-transform:uppercase;
-      cursor:pointer;
-    }
-
-    /* FOOTER */
-
-    footer{
-      padding:35px 0;
-      border-top:1px solid #222;
-      color:#555;
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:1px;
-    }
-
-    .footer-inner{
-      display:flex;
-      justify-content:space-between;
-    }
-
-    /* REVEAL */
-
-    .reveal{
-      opacity:0;
-      transform:translateY(35px);
-      transition:1s ease;
-    }
-
-    .reveal.active{
-      opacity:1;
-      transform:translateY(0);
-    }
-
-    /* RESPONSIVE */
-
-    @media(max-width:900px){
-
-      .nav-links{
-        display:none;
-      }
-
-      .hero-grid,
-      .contact,
-      .dashboard{
-        grid-template-columns:1fr;
-      }
-
-      .hero{
-        padding-top:130px;
-      }
-
-      .hero-visual{
-        height:500px;
-      }
-
-      .program-grid,
-      .pricing,
-      .trainer-grid{
-        grid-template-columns:1fr;
-      }
-
-      .price-card.featured{
-        transform:none;
-      }
-
-      .stats{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .stat:nth-child(2){
-        border-right:0;
-      }
-
-      .stat:nth-child(-n+2){
-        border-bottom:1px solid #222;
-      }
-
-      h2{
-        font-size:55px;
-      }
-
-      .cta{
-        padding:50px 30px;
-      }
-
-      .cta h2{
-        font-size:65px;
-      }
-    }
-
-    @media(max-width:600px){
-
-      .logo{
-        font-size:28px;
-      }
-
-      .nav-btn{
-        padding:10px 14px;
-      }
-
-      h1{
-        font-size:76px;
-        letter-spacing:-2px;
-      }
-
-      .hero-visual{
-        height:420px;
-      }
-
-      .main-card{
-        width:280px;
-        height:370px;
-      }
-
-      .card-x{
-        font-size:110px;
-      }
-
-      .floating-box{
-        padding:14px;
-      }
-
-      .floating-box.one{
-        top:60px;
-      }
-
-      .floating-box.two{
-        bottom:30px;
-      }
-
-      .section-head{
-        display:block;
-      }
-
-      .section-desc{
-        margin-top:20px;
-      }
-
-      .stats{
-        grid-template-columns:1fr;
-      }
-
-      .stat{
-        border-right:0;
-        border-bottom:1px solid #222;
-      }
-
-      .stat:last-child{
-        border-bottom:0;
-      }
-
-      .metrics{
-        grid-template-columns:1fr;
-      }
-
-      .cta h2{
-        font-size:50px;
-      }
-
-      .footer-inner{
-        display:block;
-      }
-
-      .footer-inner div:last-child{
-        margin-top:10px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#0f1020;
+  color:white;
+}
+
+.container{
+  display:flex;
+  flex-direction:row-reverse;
+  min-height:100vh;
+}
+
+.demo{
+  width:70%;
+  background:#111;
+  position:relative;
+}
+
+iframe{
+  width:100%;
+  height:100vh;
+  border:none;
+}
+
+.right{
+  width:30%;
+  padding:30px 22px;
+  background:linear-gradient(180deg,#181a35,#0b0c18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow-y:auto;
+}
+
+.box{
+  width:100%;
+  background:rgba(10,10,10,.88);
+  border:1px solid #d4af37;
+  border-radius:22px;
+  padding:26px 20px;
+  text-align:center;
+  box-shadow:0 0 35px rgba(212,175,55,.28);
+}
+
+.badge{
+  display:inline-block;
+  background:#d4af37;
+  color:#111;
+  padding:8px 18px;
+  border-radius:30px;
+  font-weight:800;
+  margin-bottom:16px;
+}
+
+h1{
+  font-size:34px;
+  color:#ffd86b;
+  margin-bottom:10px;
+  text-transform:uppercase;
+}
+
+.sub{
+  font-size:17px;
+  line-height:1.5;
+  margin-bottom:22px;
+  color:#eee;
+}
+
+.features{
+  display:grid;
+  gap:12px;
+  margin:22px 0;
+}
+
+.feature{
+  background:linear-gradient(90deg,#1b1b1b,#2b2208);
+  border:1px solid rgba(212,175,55,.55);
+  padding:14px;
+  border-radius:14px;
+  font-size:17px;
+  font-weight:700;
+}
+
+.feature span{
+  color:#ffd86b;
+}
+
+/* Signup Button */
+.signup-btn{
+  display:inline-block;
+  margin-top:8px;
+  padding:9px 16px;
+  background:#25D366;
+  color:#fff;
+  text-decoration:none;
+  border-radius:9px;
+  font-size:15px;
+  font-weight:800;
+  border:1px solid #1ebe5d;
+  transition:.3s;
+}
+
+.signup-btn:hover{
+  background:#1ebe5d;
+  transform:scale(1.03);
+}
+
+.website-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-top:16px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+.website-row a{
+  text-decoration:none;
+}
+
+.website{
+  color:#25D366;
+}
+
+.whatsapp-small{
+  color:#ffd86b;
+}
+
+.cta{
+  display:block;
+  background:#25D366;
+  color:#fff;
+  text-decoration:none;
+  padding:17px;
+  border-radius:16px;
+  font-size:20px;
+  font-weight:900;
+  margin-top:22px;
+  box-shadow:0 8px 18px rgba(37,211,102,.35);
+  transition:.3s;
+}
+
+.cta:hover{
+  transform:scale(1.03);
+  background:#1ebe5d;
+}
+
+/* Floating Signup Button */
+.floating-signup{
+  position:absolute;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:50;
+  background:#ff1744;
+  color:#fff;
+  padding:12px 24px;
+  border-radius:8px;
+  font-size:18px;
+  font-weight:900;
+  border:3px solid #fff;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(255,23,68,0.6);
+  transition:.3s;
+  text-decoration:none;
+  display:inline-block;
+}
+
+.floating-signup:hover{
+  transform:translateX(-50%) scale(1.08);
+  background:#ff5722;
+  box-shadow:0 12px 25px rgba(255,23,68,0.8);
+}
+
+.trust{
+  margin-top:16px;
+  color:#ccc;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.footer{
+  margin-top:18px;
+  font-size:12px;
+  color:#aaa;
+  line-height:1.5;
+}
+
+.bonus-popup{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  background:rgba(0,0,0,.78);
+}
+
+.bonus-popup[hidden]{
+  display:none;
+}
+
+.bonus-dialog{
+  position:relative;
+  width:min(100%,420px);
+  padding:34px 24px 28px;
+  border:2px solid #d4af37;
+  border-radius:16px;
+  background:linear-gradient(145deg,#24210f,#111218 70%);
+  text-align:center;
+  box-shadow:0 18px 60px rgba(0,0,0,.65);
+  animation:popup-enter .24s ease-out;
+}
+
+.bonus-close{
+  position:absolute;
+  top:8px;
+  right:12px;
+  border:0;
+  background:transparent;
+  color:#ddd;
+  font-size:28px;
+  line-height:1;
+  cursor:pointer;
+}
+
+.bonus-dialog h2{
+  margin-bottom:10px;
+  color:#ffd86b;
+  font-size:30px;
+}
+
+.bonus-dialog p{
+  margin-bottom:22px;
+  color:#eee;
+  line-height:1.5;
+}
+
+.bonus-claim{
+  display:block;
+  padding:14px 18px;
+  border-radius:8px;
+  background:#25D366;
+  color:#fff;
+  font-size:17px;
+  font-weight:800;
+  text-decoration:none;
+}
+
+.bonus-claim:hover{
+  background:#1ebe5d;
+}
+
+.bonus-claim.chaibet-claim{
+  background:#e4b833;
+  color:#17130a;
+}
+
+.bonus-claim.chaibet-claim:hover{
+  background:#f0ca55;
+}
+
+@keyframes popup-enter{
+  from{opacity:0;transform:translateY(10px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .bonus-dialog{animation:none}
+}
+
+@media(max-width:768px){
+  .container{
+    flex-direction:column-reverse;
+  }
+
+  .demo,
+  .right{
+    width:100%;
+  }
+
+  iframe{
+    height:500px;
+  }
+
+  .right{
+    padding:20px;
+  }
+}
+
+@media(max-width:480px){
+  h1{
+    font-size:28px;
+  }
+
+  .sub{
+    font-size:16px;
+  }
+
+  .feature{
+    font-size:16px;
+    padding:12px;
+  }
+
+  .signup-btn{
+    font-size:14px;
+    padding:8px 13px;
+  }
+
+  .cta{
+    font-size:18px;
+    padding:15px;
+  }
+
+  .website-row{
+    flex-direction:column;
+    gap:8px;
+  }
+}
+</style>
+
 </head>
 
 <body>
 
-  <!-- NAVIGATION -->
-  <nav>
-    <div class="container nav-inner">
-      <a href="#" class="logo">VOLT<span>X</span></a>
+<div class="bonus-popup" id="bonusPopup" role="dialog" aria-modal="true" aria-labelledby="bonusTitle">
+  <div class="bonus-dialog">
+    <button class="bonus-close" id="bonusClose" type="button" aria-label="Close bonus popup">&times;</button>
+    <h2 id="bonusTitle">Bonus Offer</h2>
+    <p>10% Deposit Bonus<br>15% Losing Bonus<br>3% Referral Bonus</p>
+    <a class="bonus-claim chaibet-claim" href="https://www.chaibet.com/?code=ice0000">Sign Up with Chaibet</a>
+  </div>
+</div>
 
-      <div class="nav-links">
-        <a href="#programs">Programs</a>
-        <a href="#performance">Performance</a>
-        <a href="#plans">Plans</a>
-        <a href="#trainers">Trainers</a>
-      </div>
+<div class="container">
 
-      <a href="#contact" class="nav-btn">Join Now</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <header class="hero">
-    <div class="container hero-grid">
-
-      <div class="hero-content reveal">
-        <div class="eyebrow">Future Of Training</div>
-
-        <h1>
-          BUILD
-          <span>POWER.</span>
-        </h1>
-
-        <p class="hero-text">
-          VOLT X is a high-performance training facility built for people
-          who refuse average. Train harder, move faster and become stronger.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#plans" class="btn btn-orange">Start Training</a>
-          <a href="#programs" class="btn btn-outline">Explore Programs</a>
-        </div>
-      </div>
-
-      <div class="hero-visual reveal">
-
-        <div class="floating-box one">
-          <span>Live Status</span>
-          <strong><i class="orange-dot"></i>ACTIVE</strong>
-        </div>
-
-        <div class="main-card" id="heroCard">
-          <div class="card-lines"></div>
-          <div class="card-number">VX / 001</div>
-          <div class="card-x">X</div>
-
-          <div class="card-info">
-            <strong>NO LIMITS</strong>
-            <small>PERFORMANCE DIVISION</small>
-          </div>
-        </div>
-
-        <div class="floating-box two">
-          <span>Members Online</span>
-          <strong>247+</strong>
-        </div>
-
-      </div>
-
-    </div>
-  </header>
-
-  <!-- MARQUEE -->
-  <div class="marquee">
-    <div class="marquee-track">
-      STRENGTH <span>✦</span>
-      SPEED <span>✦</span>
-      POWER <span>✦</span>
-      CONDITIONING <span>✦</span>
-      PERFORMANCE <span>✦</span>
-      STRENGTH <span>✦</span>
-      SPEED <span>✦</span>
-      POWER <span>✦</span>
-      CONDITIONING <span>✦</span>
-      PERFORMANCE <span>✦</span>
-    </div>
+  <div class="demo">
+    <a href="https://www.chaibet.com/?code=ice0000" target="_blank" rel="noopener noreferrer" class="floating-signup">🔥 SIGN UP WITH CHAIBET 🔥</a>
+    <iframe src="https://www.chaibet.com/?code=ice0000"></iframe>
   </div>
 
-  <!-- PROGRAMS -->
-  <section id="programs">
-    <div class="container">
+  <div class="right">
+    <div class="box">
 
-      <div class="section-head reveal">
-        <div>
-          <div class="section-label">01 / Training</div>
-          <h2>Choose Your<br>Weapon</h2>
-        </div>
+  <div class="badge">CHAIBET</div>
 
-        <p class="section-desc">
-          Structured programs designed around real performance,
-          progressive overload and measurable results.
-        </p>
-      </div>
+  <h1>Get Your ID Now</h1>
 
-      <div class="program-grid">
+  <p class="sub">
+    Fast auto website service with easy deposit support.
+    New users can start quickly through WhatsApp.
+  </p>
 
-        <div class="program reveal">
-          <div class="program-number">01</div>
-          <div class="program-icon">↗</div>
-          <h3>Strength</h3>
-          <p>
-            Build raw power with progressive resistance training,
-            compound movements and expert coaching.
-          </p>
-          <div class="program-arrow">→</div>
-        </div>
+  <div class="features">
 
-        <div class="program reveal">
-          <div class="program-number">02</div>
-          <div class="program-icon">◉</div>
-          <h3>Conditioning</h3>
-          <p>
-            Push your cardiovascular limits with high-intensity
-            conditioning and metabolic workouts.
-          </p>
-          <div class="program-arrow">→</div>
-        </div>
-
-        <div class="program reveal">
-          <div class="program-number">03</div>
-          <div class="program-icon">△</div>
-          <h3>Athletic</h3>
-          <p>
-            Develop speed, agility, explosive movement and
-            functional athletic performance.
-          </p>
-          <div class="program-arrow">→</div>
-        </div>
-
-      </div>
+    <div class="feature">
+      Minimum Deposit: <span>₹100 Only</span>
     </div>
-  </section>
 
-  <!-- PERFORMANCE DASHBOARD -->
-  <section id="performance">
-    <div class="container">
-
-      <div class="section-head reveal">
-        <div>
-          <div class="section-label">02 / Analytics</div>
-          <h2>Track The<br>Work.</h2>
-        </div>
-
-        <p class="section-desc">
-          Your progress should never be a guess. Track workouts,
-          strength levels and performance metrics every week.
-        </p>
-      </div>
-
-      <div class="dashboard reveal">
-
-        <div class="dash-main">
-          <div class="dash-title">
-            <h3>Weekly Output</h3>
-            <span class="live">● LIVE DATA</span>
-          </div>
-
-          <div class="bars">
-            <div class="bar" style="--h:45%"></div>
-            <div class="bar" style="--h:65%"></div>
-            <div class="bar" style="--h:55%"></div>
-            <div class="bar" style="--h:85%"></div>
-            <div class="bar" style="--h:72%"></div>
-            <div class="bar" style="--h:95%"></div>
-            <div class="bar" style="--h:62%"></div>
-          </div>
-
-          <div class="day-labels">
-            <span>M</span>
-            <span>T</span>
-            <span>W</span>
-            <span>T</span>
-            <span>F</span>
-            <span>S</span>
-            <span>S</span>
-          </div>
-        </div>
-
-        <div class="metrics">
-
-          <div class="metric">
-            <small>Calories</small>
-            <strong>684 <span>KC</span></strong>
-          </div>
-
-          <div class="metric">
-            <small>Workout</small>
-            <strong>76 <span>MIN</span></strong>
-          </div>
-
-          <div class="metric">
-            <small>Volume</small>
-            <strong>8.4 <span>K</span></strong>
-          </div>
-
-          <div class="metric">
-            <small>Intensity</small>
-            <strong>92 <span>%</span></strong>
-          </div>
-
-        </div>
-
-      </div>
+    <div class="feature">
+      Welcome Bonus: <span>10%</span>
     </div>
-  </section>
 
-  <!-- STATS -->
-  <section>
-    <div class="container">
-      <div class="stats reveal">
-
-        <div class="stat">
-          <strong>12K</strong>
-          <span>Members Trained</span>
-        </div>
-
-        <div class="stat">
-          <strong>48</strong>
-          <span>Weekly Classes</span>
-        </div>
-
-        <div class="stat">
-          <strong>26</strong>
-          <span>Expert Coaches</span>
-        </div>
-
-        <div class="stat">
-          <strong>24/7</strong>
-          <span>Gym Access</span>
-        </div>
-
-      </div>
+    <div class="feature">
+      Chaibet Signup:
+      <a
+        class="signup-btn"
+        href="https://www.chaibet.com/?code=ice0000"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Sign Up with Chaibet
+      </a>
     </div>
-  </section>
 
-  <!-- PRICING -->
-  <section id="plans">
-    <div class="container">
-
-      <div class="section-head reveal">
-        <div>
-          <div class="section-label">03 / Membership</div>
-          <h2>Pick Your<br>Level</h2>
-        </div>
-      </div>
-
-      <div class="pricing">
-
-        <div class="price-card reveal">
-          <h3>Core</h3>
-          <div class="price">$39 <span>/ month</span></div>
-
-          <ul>
-            <li>24/7 Gym Access</li>
-            <li>Strength Equipment</li>
-            <li>Locker Access</li>
-            <li>Workout App</li>
-          </ul>
-
-          <a href="#contact" class="price-btn">Choose Core</a>
-        </div>
-
-        <div class="price-card featured reveal">
-          <div class="popular">Most Popular</div>
-
-          <h3>Power</h3>
-          <div class="price">$69 <span>/ month</span></div>
-
-          <ul>
-            <li>Everything In Core</li>
-            <li>Unlimited Classes</li>
-            <li>Performance Tracking</li>
-            <li>Monthly Coach Review</li>
-          </ul>
-
-          <a href="#contact" class="price-btn">Choose Power</a>
-        </div>
-
-        <div class="price-card reveal">
-          <h3>Elite</h3>
-          <div class="price">$119 <span>/ month</span></div>
-
-          <ul>
-            <li>Everything In Power</li>
-            <li>Personal Training</li>
-            <li>Nutrition Guidance</li>
-            <li>Priority Booking</li>
-          </ul>
-
-          <a href="#contact" class="price-btn">Choose Elite</a>
-        </div>
-
-      </div>
+    <div class="feature">
+      Quick Help:
+      <span>Deposit &amp; Withdrawal Support</span>
     </div>
-  </section>
 
-  <!-- TRAINERS -->
-  <section id="trainers">
-    <div class="container">
+  </div>
 
-      <div class="section-head reveal">
-        <div>
-          <div class="section-label">04 / Coaches</div>
-          <h2>Built By<br>Experts</h2>
-        </div>
+  <div class="website-row">
 
-        <p class="section-desc">
-          No random routines. Our coaches combine experience,
-          science and serious training methodology.
-        </p>
-      </div>
+    <a
+      class="website"
+      href="https://www.chaibet.com/?code=ice0000"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      🌐 https://www.chaibet.com/?code=ice0000
+    </a>
 
-      <div class="trainer-grid">
+    <a
+      class="whatsapp-small"
+      href="https://wa.me/+447594202653"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      💬 WhatsApp
+    </a>
 
-        <div class="trainer reveal">
-          <div class="trainer-avatar">JD</div>
-          <h3>Jordan Davis</h3>
-          <p>Strength Coach</p>
-        </div>
+  </div>
 
-        <div class="trainer reveal">
-          <div class="trainer-avatar">MK</div>
-          <h3>Maya Khan</h3>
-          <p>Performance Coach</p>
-        </div>
+  <a
+    class="cta"
+    href="https://wa.me/+447594202653?text=Hello%20I%20want%20new%20chaibet%20ID"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    📲 WhatsApp Now
+  </a>
 
-        <div class="trainer reveal">
-          <div class="trainer-avatar">RS</div>
-          <h3>Ryan Stone</h3>
-          <p>Conditioning Coach</p>
-        </div>
+  <p class="trust">
+    ✅ Trusted chaibet Support<br>
+    ✅ Simple Process<br>
+    ✅ Fast Response
+  </p>
 
-      </div>
-    </div>
-  </section>
+  <div class="footer">
+    18+ Only | Play Responsibly | Follow Your Local Laws | T&amp;C Apply
+  </div>
 
-  <!-- CTA -->
-  <section>
-    <div class="container">
-      <div class="cta reveal">
-        <h2>YOUR EXCUSES END HERE.</h2>
+</div>
 
-        <p>
-          Stop waiting for motivation. Build discipline,
-          train with purpose and become the strongest version
-          of yourself.
-        </p>
+  </div>
 
-        <a href="#contact" class="black-btn">Start Your Journey →</a>
-      </div>
-    </div>
-  </section>
+</div>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container contact">
+<script>
+const bonusPopup = document.getElementById('bonusPopup');
+const bonusClose = document.getElementById('bonusClose');
 
-      <div class="contact-info reveal">
-        <div class="section-label">05 / Contact</div>
-        <h2>Let's Get<br>To Work.</h2>
+function closeBonusPopup(){
+  bonusPopup.hidden = true;
+}
 
-        <p>
-          Ready to start? Send us your details and our team
-          will contact you with membership options and a free
-          gym tour.
-        </p>
-
-        <div class="contact-detail">
-          <div>
-            <strong>Location</strong>
-            88 Power Street, Downtown
-          </div>
-
-          <div>
-            <strong>Phone</strong>
-            +1 555 204 8899
-          </div>
-
-          <div>
-            <strong>Email</strong>
-            hello@voltxgym.com
-          </div>
-
-          <div>
-            <strong>Hours</strong>
-            Open 24 Hours
-          </div>
-        </div>
-      </div>
-
-      <form id="contactForm" class="reveal">
-
-        <input type="text" placeholder="Your Name" required>
-
-        <input type="email" placeholder="Email Address" required>
-
-        <input type="tel" placeholder="Phone Number">
-
-        <textarea placeholder="Tell us about your fitness goal"></textarea>
-
-        <button type="submit">Request Free Tour →</button>
-
-      </form>
-
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container footer-inner">
-      <div>© 2026 VOLT X FITNESS</div>
-      <div>Train Hard. Stay Dangerous.</div>
-    </div>
-  </footer>
-
-  <script>
-
-    /* HERO 3D MOVEMENT */
-
-    const heroCard = document.getElementById("heroCard");
-
-    document.addEventListener("mousemove", e => {
-
-      if(window.innerWidth < 900) return;
-
-      const x = (window.innerWidth / 2 - e.clientX) / 45;
-      const y = (window.innerHeight / 2 - e.clientY) / 45;
-
-      heroCard.style.transform =
-        `skewY(-4deg) rotateY(${x}deg) rotateX(${y}deg)`;
-    });
-
-
-    /* SCROLL REVEAL */
-
-    const reveals = document.querySelectorAll(".reveal");
-
-    const revealObserver = new IntersectionObserver(entries => {
-
-      entries.forEach(entry => {
-
-        if(entry.isIntersecting){
-          entry.target.classList.add("active");
-        }
-
-      });
-
-    },{
-      threshold:.12
-    });
-
-    reveals.forEach(item => {
-      revealObserver.observe(item);
-    });
-
-
-    /* CONTACT FORM */
-
-    document.getElementById("contactForm").addEventListener("submit", function(e){
-
-      e.preventDefault();
-
-      alert(
-        "Thanks for contacting VOLT X! Our team will get back to you shortly."
-      );
-
-      this.reset();
-
-    });
-
-  </script>
+bonusClose.addEventListener('click', closeBonusPopup);
+bonusPopup.addEventListener('click', (event) => {
+  if(event.target === bonusPopup) closeBonusPopup();
+});
+document.addEventListener('keydown', (event) => {
+  if(event.key === 'Escape') closeBonusPopup();
+});
+</script>
 
 </body>
 </html>
-```
