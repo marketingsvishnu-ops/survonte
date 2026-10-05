@@ -1,345 +1,920 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AllPanel 7 ID</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VOLT X — Cyber Fitness</title>
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-body{
-    background:#042b23;
-    color:#fff;
-    overflow-x:auto;
-}
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-.container{
-    display:flex;
-    min-height:100vh;
-}
+    :root{
+      --orange:#ff5a00;
+      --orange2:#ff8a00;
+      --black:#080808;
+      --dark:#111;
+      --gray:#9a9a9a;
+      --white:#f5f5f5;
+      --line:rgba(255,255,255,.1);
+    }
 
-.demo{
-    width:70%;
-    background:#111;
-}
-
-iframe{
-    width:100%;
-    height:100vh;
-    border:none;
-}
-
-.right{
-    width:30%;
-    padding:30px 22px;
-    background:linear-gradient(180deg,#008f73,#043d33);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.box{
-    width:100%;
-    background:#07110f;
-    border:1px solid #00e8ad;
-    border-radius:22px;
-    padding:24px 18px;
-    text-align:center;
-    box-shadow:0 0 30px rgba(0,232,173,.35);
-}
-
-.badge{
-    display:inline-block;
-    background:#00e8ad;
-    color:#001f18;
-    padding:10px 22px;
-    border-radius:30px;
-    font-weight:bold;
-    margin-bottom:16px;
-}
-
-h1{
-    color:#00e8ad;
-    font-size:30px;
-    text-transform:uppercase;
-    margin-bottom:12px;
-}
-
-.sub{
-    color:#ddd;
-    line-height:1.6;
-    margin-bottom:18px;
-    font-size:16px;
-}
-
-.process{
-    text-align:left;
-    background:linear-gradient(180deg,#07110f,#06483b);
-    border:1px solid #00e8ad;
-    border-radius:16px;
-    padding:18px;
-    margin:18px 0;
-}
-
-.process h2{
-    color:#00e8ad;
-    font-size:20px;
-    margin-bottom:12px;
-    text-align:center;
-}
-
-.process h3{
-    color:#fff;
-    font-size:18px;
-    margin:16px 0 8px;
-}
-
-.process p,
-.process li{
-    color:#ddd;
-    font-size:15px;
-    line-height:1.6;
-}
-
-.process ol{
-    padding-left:20px;
-}
-
-.manual-whatsapp,
-.signup{
-    display:block;
-    background:#00e8ad;
-    color:#001f18;
-    text-decoration:none;
-    padding:15px;
-    border-radius:14px;
-    font-size:20px;
-    font-weight:bold;
-    text-align:center;
-    box-shadow:0 0 18px rgba(0,232,173,.4);
-}
-
-.manual-whatsapp{
-    margin:14px 0 8px;
-}
-
-.signup{
-    margin-top:16px;
-}
-
-.manual-whatsapp:hover,
-.signup:hover{
-    background:#00c996;
-}
-
-.features{
-    display:grid;
-    gap:12px;
-    margin:22px 0 18px;
-}
-
-.feature{
-    background:linear-gradient(90deg,#092a24,#06483b);
-    border:1px solid #00e8ad;
-    border-radius:14px;
-    padding:14px;
-    font-size:17px;
-    font-weight:bold;
-}
-
-.feature span{
-    color:#00e8ad;
-}
-
-.website-row{
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-    margin-top:18px;
-    font-weight:bold;
-    flex-wrap:wrap;
-}
-
-.website-row a{
-    text-decoration:none;
-    word-break:break-word;
-}
-
-.website,
-.whatsapp-small{
-    color:#00e8ad;
-}
-
-.trust{
-    margin-top:18px;
-    color:#ccc;
-    line-height:1.7;
-}
-
-.footer{
-    margin-top:20px;
-    color:#888;
-    font-size:12px;
-}
-
-/* MOBILE — Laptop jaisa same layout */
-@media(max-width:768px){
+    html{
+      scroll-behavior:smooth;
+    }
 
     body{
-        overflow-x:auto;
+      background:var(--black);
+      color:var(--white);
+      font-family:Inter,sans-serif;
+      overflow-x:hidden;
+    }
+
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.035;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      z-index:999;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
     }
 
     .container{
-        width:1200px;
-        min-width:1200px;
-        flex-direction:row;
+      width:min(1180px,92%);
+      margin:auto;
     }
 
-    .demo{
-        width:70%;
+    /* NAVBAR */
+
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:1000;
+      padding:22px 0;
+      background:rgba(8,8,8,.75);
+      backdrop-filter:blur(15px);
+      border-bottom:1px solid var(--line);
     }
 
-    .right{
-        width:30%;
-        padding:25px 18px;
+    .nav-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
     }
 
-    iframe{
-        height:100vh;
-        min-height:700px;
+    .logo{
+      font-family:"Barlow Condensed",sans-serif;
+      font-size:34px;
+      font-weight:900;
+      letter-spacing:-1px;
+    }
+
+    .logo span{
+      color:var(--orange);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:34px;
+      font-size:13px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+
+    .nav-links a{
+      transition:.3s;
+    }
+
+    .nav-links a:hover{
+      color:var(--orange);
+    }
+
+    .nav-btn{
+      background:var(--orange);
+      padding:13px 21px;
+      color:#000;
+      font-weight:800;
+      font-size:12px;
+      text-transform:uppercase;
+      clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      padding-top:120px;
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .hero:after{
+      content:"";
+      position:absolute;
+      width:600px;
+      height:600px;
+      right:-200px;
+      top:80px;
+      background:radial-gradient(circle,rgba(255,90,0,.25),transparent 65%);
+      pointer-events:none;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:var(--orange);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      margin-bottom:20px;
+    }
+
+    .eyebrow:before{
+      content:"";
+      width:35px;
+      height:2px;
+      background:var(--orange);
     }
 
     h1{
-        font-size:28px;
+      font-family:"Barlow Condensed",sans-serif;
+      font-size:clamp(75px,10vw,150px);
+      line-height:.8;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:-4px;
     }
 
-    .manual-whatsapp,
-    .signup{
-        font-size:19px;
+    h1 span{
+      color:var(--orange);
+      display:block;
     }
-}
-</style>
-</head>
 
-<body>
+    .hero-text{
+      margin-top:30px;
+      color:#aaa;
+      max-width:520px;
+      line-height:1.8;
+      font-size:15px;
+    }
 
-<div class="container">
+    .hero-actions{
+      display:flex;
+      gap:15px;
+      margin-top:35px;
+    }
 
-    <div class="demo">
-        <iframe src="https://www.allpanel7.com/?code=MAHA1991"></iframe>
-    </div>
+    .btn{
+      display:inline-block;
+      padding:17px 27px;
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      transition:.3s;
+    }
 
-    <div class="right">
+    .btn-orange{
+      background:var(--orange);
+      color:#000;
+    }
 
-        <div class="box">
+    .btn-orange:hover{
+      background:#fff;
+      transform:translateY(-4px);
+    }
 
-            <div class="badge">ALLPANEL7</div>
+    .btn-outline{
+      border:1px solid #444;
+    }
 
-            <h1>Get Your AllPanel7 ID</h1>
+    .btn-outline:hover{
+      border-color:var(--orange);
+      color:var(--orange);
+    }
 
-            <p class="sub">
-                Choose the registration method that's most convenient for you and get started with AllPanel 7 today!
-            </p>
+    /* HERO VISUAL */
 
-            <div class="process">
+    .hero-visual{
+      position:relative;
+      height:560px;
+    }
 
-                <h2>Get Your AllPanel 7 ID – Your Choice!</h2>
+    .main-card{
+      position:absolute;
+      right:0;
+      top:25px;
+      width:390px;
+      height:500px;
+      background:
+        linear-gradient(135deg,rgba(255,90,0,.12),transparent 40%),
+        #151515;
+      border:1px solid #333;
+      transform:skewY(-4deg);
+      overflow:hidden;
+      box-shadow:25px 30px 80px rgba(0,0,0,.6);
+    }
 
-                <h3>✅ Manual ID</h3>
+    .main-card:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(110deg,transparent 40%,rgba(255,90,0,.18),transparent 60%);
+      animation:shine 4s infinite;
+    }
 
-                <p>
-                    Click the <strong>"WhatsApp Now"</strong> button and our team will create your ID for you.
-                </p>
+    @keyframes shine{
+      0%,60%{transform:translateX(-100%);}
+      100%{transform:translateX(100%);}
+    }
 
-                <a class="manual-whatsapp"
-                   href="https://wa.me/+917980303785?text=Hello%20I%20want%20new%20manual%20ID"
-                   target="_blank">
-                    📲 WhatsApp Now
-                </a>
+    .card-lines{
+      position:absolute;
+      inset:20px;
+      border:1px solid rgba(255,255,255,.08);
+    }
 
-                <h3>✅ Self-Registration</h3>
+    .card-number{
+      position:absolute;
+      top:30px;
+      left:30px;
+      font-family:"Barlow Condensed";
+      font-size:15px;
+      color:#777;
+      letter-spacing:3px;
+    }
 
-                <p>
-                    Click the <strong>"Sign Up"</strong> button and follow these simple steps:
-                </p>
+    .card-x{
+      position:absolute;
+      right:30px;
+      top:15px;
+      font-family:"Barlow Condensed";
+      font-size:160px;
+      line-height:1;
+      color:var(--orange);
+      opacity:.9;
+      font-weight:900;
+    }
 
-                <ol>
-                    <li>Enter your mobile number.</li>
-                    <li>Create your username.</li>
-                    <li>Create your password and confirm it.</li>
-                    <li>The Signup Code is pre-filled as <strong>MAHA1991</strong>.</li>
-                    <li>Click <strong>"Sign Up"</strong> to complete your registration.</li>
-                </ol>
+    .card-info{
+      position:absolute;
+      bottom:35px;
+      left:35px;
+    }
 
-                <a class="signup"
-                   href="https://www.allpanel7.com/?code=MAHA1991"
-                   target="_blank">
-                    📝 Sign Up
-                </a>
+    .card-info strong{
+      display:block;
+      font-family:"Barlow Condensed";
+      font-size:52px;
+      text-transform:uppercase;
+    }
 
-            </div>
+    .card-info small{
+      color:#999;
+      letter-spacing:3px;
+    }
 
-            <div class="features">
+    .floating-box{
+      position:absolute;
+      background:#101010;
+      border:1px solid #333;
+      padding:20px;
+      z-index:3;
+      box-shadow:15px 20px 40px rgba(0,0,0,.4);
+    }
 
-                <div class="feature">
-                    Minimum Deposit:
-                    <span>₹100 Only</span>
-                </div>
+    .floating-box.one{
+      left:0;
+      top:100px;
+    }
 
-                <div class="feature">
-                    Welcome Bonus:
-                    <span>10%</span>
-                </div>
+    .floating-box.two{
+      left:35px;
+      bottom:70px;
+    }
 
-                <div class="feature">
-                    Auto and Manual Service:
-                    <span>Available</span>
-                </div>
+    .floating-box span{
+      display:block;
+      font-size:10px;
+      color:#777;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      margin-bottom:8px;
+    }
 
-                <div class="feature">
-                    Quick Help:
-                    <span>24/7 Support Available</span>
-                </div>
+    .floating-box strong{
+      font-family:"Barlow Condensed";
+      font-size:32px;
+    }
 
-            </div>
+    .orange-dot{
+      display:inline-block;
+      width:8px;
+      height:8px;
+      background:var(--orange);
+      border-radius:50%;
+      margin-right:8px;
+      box-shadow:0 0 15px var(--orange);
+    }
 
-            <div class="website-row">
+    /* MARQUEE */
 
-                <a class="website"
-                   href="https://www.allpanel7.com/?code=MAHA1991"
-                   target="_blank">
-                    🌐 www.allpanel7.com/?code=MAHA1991
-                </a>
+    .marquee{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+      white-space:nowrap;
+      padding:18px 0;
+      background:#0d0d0d;
+    }
 
-                <a class="whatsapp-small"
-                   href="https://wa.me/+917980303785"
-                   target="_blank">
-                    💬 WhatsApp
-                </a>
+    .marquee-track{
+      display:inline-block;
+      animation:move 20s linear infinite;
+      font-family:"Barlow Condensed";
+      font-size:25px;
+      font-weight:800;
+      text-transform:uppercase;
+    }
 
-            </div>
+    .marquee-track span{
+      color:var(--orange);
+      margin:0 30px;
+    }
 
-            <div class="trust">
-                ✅ Trusted Manual Support<br>
-                ✅ Simple Process<br>
-                ✅ Fast Response
-            </div>
+    @keyframes move{
+      from{transform:translateX(0);}
+      to{transform:translateX(-50%);}
+    }
 
-            <div class="footer">
-                18+ Only | Play Responsibly | Follow Your Local Laws | T&amp;C Apply
-            </div>
+    /* SECTION */
 
-        </div>
+    section{
+      padding:110px 0;
+    }
 
-    </div>
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      margin-bottom:55px;
+      gap:30px;
+    }
 
-</div>
+    .section-label{
+      color:var(--orange);
+      text-transform:uppercase;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:3px;
+      margin-bottom:12px;
+    }
 
-</body>
-</html>
+    h2{
+      font-family:"Barlow Condensed";
+      font-size:70px;
+      line-height:.9;
+      text-transform:uppercase;
+      font-weight:900;
+    }
+
+    .section-desc{
+      max-width:400px;
+      color:#888;
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    /* PROGRAMS */
+
+    .program-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:2px;
+    }
+
+    .program{
+      min-height:350px;
+      padding:35px;
+      background:#111;
+      border:1px solid #222;
+      position:relative;
+      overflow:hidden;
+      transition:.4s;
+    }
+
+    .program:hover{
+      background:#171717;
+      transform:translateY(-8px);
+      border-color:var(--orange);
+    }
+
+    .program-number{
+      font-family:"Barlow Condensed";
+      color:#444;
+      font-size:60px;
+      font-weight:900;
+    }
+
+    .program-icon{
+      font-size:40px;
+      color:var(--orange);
+      margin:35px 0 20px;
+    }
+
+    .program h3{
+      font-family:"Barlow Condensed";
+      font-size:35px;
+      text-transform:uppercase;
+    }
+
+    .program p{
+      color:#777;
+      font-size:13px;
+      line-height:1.7;
+      margin-top:10px;
+    }
+
+    .program-arrow{
+      position:absolute;
+      right:25px;
+      bottom:20px;
+      color:var(--orange);
+      font-size:28px;
+    }
+
+    /* DASHBOARD */
+
+    .dashboard{
+      background:#101010;
+      border:1px solid #292929;
+      padding:35px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:35px;
+    }
+
+    .dash-main{
+      min-height:330px;
+      background:#151515;
+      padding:30px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .dash-title{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:35px;
+    }
+
+    .dash-title h3{
+      font-family:"Barlow Condensed";
+      font-size:30px;
+      text-transform:uppercase;
+    }
+
+    .live{
+      color:var(--orange);
+      font-size:10px;
+      font-weight:800;
+      letter-spacing:2px;
+    }
+
+    .bars{
+      height:180px;
+      display:flex;
+      align-items:end;
+      gap:10px;
+    }
+
+    .bar{
+      flex:1;
+      background:linear-gradient(to top,var(--orange),#ffb067);
+      height:var(--h);
+      position:relative;
+      animation:barPulse 2s infinite alternate;
+    }
+
+    .bar:after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      top:0;
+      height:2px;
+      background:#fff;
+    }
+
+    @keyframes barPulse{
+      from{opacity:.65;}
+      to{opacity:1;}
+    }
+
+    .day-labels{
+      display:flex;
+      gap:10px;
+      margin-top:12px;
+      color:#555;
+      font-size:10px;
+    }
+
+    .day-labels span{
+      flex:1;
+      text-align:center;
+    }
+
+    .metrics{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:2px;
+    }
+
+    .metric{
+      background:#151515;
+      padding:30px;
+      border:1px solid #202020;
+    }
+
+    .metric small{
+      color:#666;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:9px;
+    }
+
+    .metric strong{
+      display:block;
+      font-family:"Barlow Condensed";
+      font-size:48px;
+      margin-top:15px;
+    }
+
+    .metric strong span{
+      color:var(--orange);
+      font-size:20px;
+    }
+
+    /* STATS */
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      border-top:1px solid #222;
+      border-bottom:1px solid #222;
+    }
+
+    .stat{
+      padding:40px 25px;
+      text-align:center;
+      border-right:1px solid #222;
+    }
+
+    .stat:last-child{
+      border-right:0;
+    }
+
+    .stat strong{
+      font-family:"Barlow Condensed";
+      font-size:65px;
+      color:var(--orange);
+    }
+
+    .stat span{
+      display:block;
+      color:#777;
+      font-size:10px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    /* PRICING */
+
+    .pricing{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .price-card{
+      background:#111;
+      border:1px solid #292929;
+      padding:35px;
+      position:relative;
+      transition:.3s;
+    }
+
+    .price-card.featured{
+      border-color:var(--orange);
+      transform:translateY(-12px);
+    }
+
+    .popular{
+      position:absolute;
+      top:0;
+      right:0;
+      background:var(--orange);
+      color:#000;
+      padding:9px 16px;
+      font-size:9px;
+      font-weight:900;
+      text-transform:uppercase;
+    }
+
+    .price-card h3{
+      font-family:"Barlow Condensed";
+      font-size:32px;
+      text-transform:uppercase;
+    }
+
+    .price{
+      font-family:"Barlow Condensed";
+      font-size:65px;
+      font-weight:900;
+      margin:25px 0;
+    }
+
+    .price span{
+      font-family:Inter;
+      font-size:12px;
+      color:#666;
+    }
+
+    .price-card ul{
+      list-style:none;
+      border-top:1px solid #222;
+      padding-top:20px;
+    }
+
+    .price-card li{
+      padding:10px 0;
+      color:#888;
+      font-size:13px;
+    }
+
+    .price-card li:before{
+      content:"✓";
+      color:var(--orange);
+      margin-right:10px;
+    }
+
+    .price-btn{
+      display:block;
+      margin-top:30px;
+      text-align:center;
+      border:1px solid #333;
+      padding:14px;
+      font-size:11px;
+      font-weight:800;
+      text-transform:uppercase;
+    }
+
+    .featured .price-btn{
+      background:var(--orange);
+      color:#000;
+      border-color:var(--orange);
+    }
+
+    /* TRAINERS */
+
+    .trainer-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .trainer{
+      background:#111;
+      min-height:390px;
+      padding:25px;
+      border:1px solid #222;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .trainer:before{
+      content:"";
+      position:absolute;
+      width:170px;
+      height:170px;
+      background:var(--orange);
+      border-radius:50%;
+      filter:blur(80px);
+      opacity:.15;
+      right:-50px;
+      top:-50px;
+    }
+
+    .trainer-avatar{
+      height:230px;
+      background:
+        linear-gradient(135deg,#222,#0d0d0d);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:"Barlow Condensed";
+      font-size:100px;
+      font-weight:900;
+      color:#333;
+    }
+
+    .trainer h3{
+      font-family:"Barlow Condensed";
+      font-size:30px;
+      text-transform:uppercase;
+      margin-top:20px;
+    }
+
+    .trainer p{
+      color:var(--orange);
+      font-size:10px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      margin-top:5px;
+    }
+
+    /* CTA */
+
+    .cta{
+      background:var(--orange);
+      color:#000;
+      padding:80px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .cta:after{
+      content:"X";
+      position:absolute;
+      right:30px;
+      top:-90px;
+      font-family:"Barlow Condensed";
+      font-size:400px;
+      font-weight:900;
+      opacity:.08;
+    }
+
+    .cta h2{
+      font-size:90px;
+      max-width:700px;
+    }
+
+    .cta p{
+      max-width:520px;
+      margin:20px 0 30px;
+      line-height:1.7;
+      color:#222;
+    }
+
+    .black-btn{
+      background:#000;
+      color:#fff;
+      display:inline-block;
+      padding:16px 28px;
+      font-size:11px;
+      font-weight:900;
+      text-transform:uppercase;
+    }
+
+    /* CONTACT */
+
+    .contact{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+    }
+
+    .contact-info h2{
+      margin-bottom:25px;
+    }
+
+    .contact-info p{
+      color:#777;
+      line-height:1.8;
+      max-width:450px;
+    }
+
+    .contact-detail{
+      margin-top:30px;
+    }
+
+    .contact-detail div{
+      padding:16px 0;
+      border-bottom:1px solid #222;
+      color:#999;
+      font-size:13px;
+    }
+
+    .contact-detail strong{
+      color:#fff;
+      display:inline-block;
+      width:100px;
+    }
+
+    form{
+      background:#111;
+      padding:35px;
+      border:1px solid #222;
+    }
+
+    input,textarea{
+      width:100%;
+      background:#0b0b0b;
+      border:1px solid #292929;
+      color:#fff;
+      padding:16px;
+      margin-bottom:12px;
+      outline:none;
+      font-family:Inter;
+    }
+
+    input:focus,textarea:focus{
+      border-color:var(--orange);
+    }
+
+    textarea{
+      height:130px;
+      resize:none;
+    }
+
+    form button{
+      width:100%;
+      border:0;
+      padding:17px;
+      background:var(--orange);
+      font-weight:900;
+      text-transform:uppercase;
+      cursor:pointer;
+    }
+
+    /* FOOTER */
+
+    footer{
+      padding:35px 0;
+      border-top:1px solid #222;
+      color:#555;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+    }
+
+    /* REVEAL */
+
+    .reveal{
+      opacity:0;
+      transform:translateY(35px);
+      transition:1s ease;
+    }
+
+    .reveal.active{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:900px){
+
+      .nav-links{
+        display:none;
+      }
+
+      .hero-grid,
+      .contact,
+      .dashboard{
+        grid-temp
+```
